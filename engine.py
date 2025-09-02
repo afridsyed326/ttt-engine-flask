@@ -3,7 +3,6 @@ import numpy as np
 
 LENGTH = 3 # Board Length, currently supports only 3
 
-
 class AgentEval:
     def __init__(self, sym, value_sym):
         self.V = value_sym
@@ -136,7 +135,9 @@ class Environment:
 def run_move(state, current_player):
     # Provide path to common folder enclosing 'vx.npy' and 'vo.npy'
     # sv_path = 'tic-tac-toe-e'
-    sv_path = "C:/Users/MohammedAfrid/Desktop/Aviroc/tic-tac-toe-e"
+    # sv_path = "C:/Users/MohammedAfrid/Desktop/Aviroc/tic-tac-toe-e"
+    sv_path = os.getenv('SV_PATH')
+    
     
     env = Environment()
     env.set_state(np.array(state))

@@ -1,7 +1,12 @@
 from flask import Flask, jsonify, request
 from engine import run_move, check_status
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+DEBUG = os.getenv('DEBUG')
 
 @app.route('/move', methods=['POST'])
 def move():
@@ -29,5 +34,5 @@ def status():
     return jsonify({"status": c, "winner": w})
 
 if __name__ == '__main__':
-    app.run(port=8000,debug=True)
+    app.run(port=8000,debug=DEBUG=="TRUE")
 
